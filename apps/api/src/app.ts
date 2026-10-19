@@ -12,7 +12,24 @@ export function createApp() {
   const app = new Hono();
 
   app.use("*", secureHeaders());
-  app.use("*", cors({ origin: env.WEB_ORIGIN }));
+  app.use(
+    "*",
+    cors({
+      origin: (origin) => {
+        if (!origin) return undefined;
+        if (origin === env.WEB_ORIGIN) return origin;
+        // Local dev / preview proxies on the loopback interface
+        try {
+          const host = new URL(origin).hostname;
+          if (host === "localhost" || host === "127.0.0.1" || host === "[::1]")
+            return origin;
+        } catch {
+          /* malformed origin → reject */
+        }
+        return undefined;
+      },
+    }),
+  );
   app.use("*", async (c, next) => {
     const started = performance.now();
     await next();

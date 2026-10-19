@@ -83,9 +83,7 @@ export const ordersRoutes = new Hono()
     const r = periodRanges(period);
 
     const statusCond = status ? sql` AND o.status = ${status}` : sql``;
-    const qCond = q
-      ? sql` AND CAST(o.number AS TEXT) LIKE ${"%" + q + "%"}`
-      : sql``;
+    const qCond = q ? sql` AND CAST(o.number AS TEXT) LIKE ${`%${q}%`}` : sql``;
     const where = sql`
       WHERE o.created_at >= ${r.start.getTime()} AND o.created_at <= ${r.end.getTime()}
       ${locCond(locationId)} ${statusCond} ${qCond}`;

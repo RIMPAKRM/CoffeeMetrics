@@ -13,7 +13,6 @@ import {
   categoryTotals,
   dailyRevenue,
   deltaPct,
-  itemTotals,
   locCond,
   rangeTotals,
 } from "../lib/queries";

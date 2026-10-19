@@ -4,7 +4,12 @@ import { hc } from "hono/client";
 export const API_URL =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
 
-export const api = hc<AppType>(API_URL);
+// In the browser we go through the same-origin /api/* rewrite in next.config.
+// Outside the browser (SSR edge cases) hit the API directly.
+const baseUrl =
+  typeof window === "undefined" ? API_URL : window.location.origin;
+
+export const api = hc<AppType>(baseUrl);
 
 /** Unwrap the { data } / { error } envelope used across the API. */
 export async function unwrap<T>(
