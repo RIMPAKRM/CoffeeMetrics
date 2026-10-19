@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm -r --parallel dev",
+    "start": "pnpm -r --parallel start",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "lint": "biome check .",
