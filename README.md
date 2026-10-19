@@ -66,6 +66,10 @@ packages/
 
 ## Конфигурация
 
-См. `.env.example`. Основное: `PORT`, `WEB_ORIGIN` (CORS), `DATABASE_PATH`, `SIMULATE_ORDERS=0` — выключить генератор заказов, `SEED_ON_START=0` — не сидировать при старте.
+См. `.env.example`. Основное: `API_PORT` (не `PORT` — на хостингах оно зарезервировано за web), `WEB_ORIGIN` (CORS), `DATABASE_PATH`, `SIMULATE_ORDERS=0` — выключить генератор заказов, `SEED_ON_START=0` — не сидировать при старте.
+
+## Деплой (Render)
+
+В репозитории лежит `render.yaml` — Blueprint для одного web-сервиса (web+api в одном процессе-группе, БД сидируется при старте): Render Dashboard → **New → Blueprint** → выбрать репозиторий. Публичный порт — `3000` (Next), API слушает `API_PORT=3001` внутри того же сервиса.
 
 > SQLite использован как fallback (нет локального Postgres/Docker). Для продакшена замените драйвер `better-sqlite3` на `pg`/`postgres-js`, пропишите `DATABASE_URL` и перегенерируйте миграции — остальной код неизменен.

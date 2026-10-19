@@ -16,7 +16,8 @@ if (existsSync(envFile)) {
 
 export const env = z
   .object({
-    PORT: z.coerce.number().int().default(3001),
+    // Own var name — on hosts like Render, PORT is reserved for the public web port
+    API_PORT: z.coerce.number().int().default(3001),
     WEB_ORIGIN: z.url().default("http://localhost:3000"),
     DATABASE_PATH: z.string().default(`${apiRoot}data/coffeemetrics.db`),
     NODE_ENV: z

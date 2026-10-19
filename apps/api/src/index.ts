@@ -11,7 +11,7 @@ if (env.SEED_ON_START) {
 
 const app = createApp();
 
-const server = serve({ fetch: app.fetch, port: env.PORT }, (info) => {
+const server = serve({ fetch: app.fetch, port: env.API_PORT }, (info) => {
   logger.info(`API listening on http://localhost:${info.port}`);
 });
 
