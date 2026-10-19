@@ -35,10 +35,12 @@ function KpiCard({
   return (
     <Card className="flex flex-col gap-1.5 rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
       <div className="flex items-center justify-between gap-1">
-        <span className="text-sm text-muted-foreground">{label}</span>
-        <DeltaBadge pct={delta} />
+        <span className="truncate text-sm text-muted-foreground">{label}</span>
+        <span className="shrink-0">
+          <DeltaBadge pct={delta} />
+        </span>
       </div>
-      <div className="truncate text-[22px] leading-tight font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
+      <div className="truncate text-[20px] leading-tight font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
         {value}
       </div>
       <div className="text-xs text-muted-foreground">{footnote}</div>

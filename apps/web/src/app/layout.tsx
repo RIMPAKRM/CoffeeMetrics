@@ -22,10 +22,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Providers>
           <div className="flex min-h-screen">
             <AppSidebar />
-            <MobileNav />
-            <main className="min-w-0 flex-1 pb-[calc(64px+env(safe-area-inset-bottom))] lg:pb-0">
-              {children}
-            </main>
+            <div className="min-w-0 flex-1">
+              <MobileNav />
+              <main className="pb-[calc(64px+env(safe-area-inset-bottom))] lg:pb-0">
+                {children}
+              </main>
+            </div>
           </div>
         </Providers>
       </body>
