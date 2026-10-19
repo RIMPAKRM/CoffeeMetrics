@@ -21,10 +21,10 @@ export default function LocationsPage() {
   const maxRevenue = Math.max(...(stats.data ?? []).map((s) => s.revenue), 1);
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-[28px] font-semibold tracking-tight text-coffee-950">
+          <h1 className="text-2xl font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
             Точки
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -34,7 +34,7 @@ export default function LocationsPage() {
         <PeriodSelector value={period} onChange={setPeriod} />
       </header>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-4 grid gap-4 sm:mt-6 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
         {stats.isPending
           ? Array.from({ length: 3 }).map((_, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: static skeletons

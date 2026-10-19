@@ -23,7 +23,7 @@ export function AppSidebar() {
   const { data: locations } = useLocations();
 
   return (
-    <aside className="sticky top-0 flex h-screen w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground">
+    <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col bg-sidebar text-sidebar-foreground lg:flex">
       <div className="flex items-center gap-2.5 px-5 pt-6 pb-8">
         <div className="flex size-9 items-center justify-center rounded-xl bg-sidebar-primary">
           <Coffee

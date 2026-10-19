@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppSidebar } from "@/components/app-sidebar";
+import { MobileNav } from "@/components/mobile-nav";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -21,7 +22,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Providers>
           <div className="flex min-h-screen">
             <AppSidebar />
-            <main className="min-w-0 flex-1">{children}</main>
+            <MobileNav />
+            <main className="min-w-0 flex-1 pb-[calc(64px+env(safe-area-inset-bottom))] lg:pb-0">
+              {children}
+            </main>
           </div>
         </Providers>
       </body>

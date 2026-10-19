@@ -15,7 +15,7 @@ export function TopItems({
   const max = Math.max(...(items ?? []).map((i) => i.qty), 1);
 
   return (
-    <Card className="rounded-2xl border-border/70 p-5 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
+    <Card className="rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
       <h2 className="text-[17px] font-semibold text-coffee-950">
         Топ-10 позиций
       </h2>
@@ -37,7 +37,9 @@ export function TopItems({
               <span className="w-4 text-right text-xs text-muted-foreground">
                 {item.rank}
               </span>
-              <span className="w-36 truncate text-coffee-950">{item.name}</span>
+              <span className="w-24 truncate text-coffee-950 sm:w-36">
+                {item.name}
+              </span>
               <div className="h-4 min-w-0 flex-1 overflow-hidden rounded-full bg-muted">
                 <div
                   className="h-full rounded-full"

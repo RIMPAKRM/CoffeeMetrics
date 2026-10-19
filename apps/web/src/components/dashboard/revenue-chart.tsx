@@ -35,8 +35,8 @@ export function RevenueChart({
   );
 
   return (
-    <Card className="rounded-2xl border-border/70 p-5 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
-      <div className="mb-1 flex items-start justify-between gap-4">
+    <Card className="rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
+      <div className="mb-1 flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
         <div>
           <h2 className="text-[17px] font-semibold text-coffee-950">
             Выручка по дням
@@ -58,7 +58,7 @@ export function RevenueChart({
         </div>
       </div>
 
-      <div className="mt-2 h-64">
+      <div className="mt-2 h-52 sm:h-64">
         {loading || !points ? (
           <Skeleton className="h-full w-full rounded-xl" />
         ) : (

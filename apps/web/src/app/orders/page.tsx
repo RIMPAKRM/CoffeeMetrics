@@ -88,10 +88,10 @@ export default function OrdersPage() {
   const resetPage = () => setPage(1);
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-[28px] font-semibold tracking-tight text-coffee-950">
+          <h1 className="text-2xl font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
             Заказы
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -109,9 +109,9 @@ export default function OrdersPage() {
         />
       </header>
 
-      <Card className="mt-6 rounded-2xl border-border/70 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
+      <Card className="mt-4 rounded-2xl border-border/70 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:mt-6">
         <div className="flex flex-wrap items-center gap-3 border-b border-border/60 p-4">
-          <div className="relative w-64">
+          <div className="relative w-full sm:w-64">
             <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               value={q}
@@ -130,7 +130,7 @@ export default function OrdersPage() {
               resetPage();
             }}
           >
-            <SelectTrigger className="h-9 w-44 rounded-xl bg-sand/40">
+            <SelectTrigger className="h-9 w-[calc(50%-6px)] rounded-xl bg-sand/40 sm:w-44">
               <SelectValue placeholder="Все точки" />
             </SelectTrigger>
             <SelectContent>
@@ -149,7 +149,7 @@ export default function OrdersPage() {
               resetPage();
             }}
           >
-            <SelectTrigger className="h-9 w-40 rounded-xl bg-sand/40">
+            <SelectTrigger className="h-9 w-[calc(50%-6px)] rounded-xl bg-sand/40 sm:w-40">
               <SelectValue placeholder="Все статусы" />
             </SelectTrigger>
             <SelectContent>
@@ -163,64 +163,66 @@ export default function OrdersPage() {
           </Select>
         </div>
 
-        <Table>
-          <TableHeader>
-            <TableRow className="border-border/60 hover:bg-transparent">
-              <TableHead className="w-28 pl-5">Заказ</TableHead>
-              <TableHead className="w-36">Время</TableHead>
-              <TableHead>Позиции</TableHead>
-              <TableHead className="w-32">Точка</TableHead>
-              <TableHead className="w-28 text-right">Сумма</TableHead>
-              <TableHead className="w-32 pr-5">Статус</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {orders.isPending ? (
-              Array.from({ length: 10 }).map((_, i) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: static skeletons
-                <TableRow key={i} className="border-border/60">
-                  <TableCell colSpan={6} className="px-5 py-3">
-                    <Skeleton className="h-6 w-full" />
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : data && data.items.length > 0 ? (
-              data.items.map((o) => (
-                <TableRow key={o.id} className="border-border/60">
-                  <TableCell className="pl-5 font-semibold text-coffee-950">
-                    #{o.number}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground tabular-nums">
-                    {formatDateTime(o.createdAt)}
-                  </TableCell>
-                  <TableCell className="max-w-0">
-                    <span className="block truncate text-coffee-950">
-                      {itemsLabel(o)}
-                    </span>
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">
-                    {o.locationName}
-                  </TableCell>
-                  <TableCell className="text-right font-semibold text-coffee-950 tabular-nums">
-                    {formatTenge(o.total)}
-                  </TableCell>
-                  <TableCell className="pr-5">
-                    <StatusCell status={o.status} />
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
+        <div className="overflow-x-auto">
+          <Table className="min-w-[720px]">
+            <TableHeader>
               <TableRow className="border-border/60 hover:bg-transparent">
-                <TableCell
-                  colSpan={6}
-                  className="py-12 text-center text-sm text-muted-foreground"
-                >
-                  Заказы не найдены — попробуйте изменить фильтры
-                </TableCell>
+                <TableHead className="w-28 pl-5">Заказ</TableHead>
+                <TableHead className="w-36">Время</TableHead>
+                <TableHead>Позиции</TableHead>
+                <TableHead className="w-32">Точка</TableHead>
+                <TableHead className="w-28 text-right">Сумма</TableHead>
+                <TableHead className="w-32 pr-5">Статус</TableHead>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {orders.isPending ? (
+                Array.from({ length: 10 }).map((_, i) => (
+                  // biome-ignore lint/suspicious/noArrayIndexKey: static skeletons
+                  <TableRow key={i} className="border-border/60">
+                    <TableCell colSpan={6} className="px-5 py-3">
+                      <Skeleton className="h-6 w-full" />
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : data && data.items.length > 0 ? (
+                data.items.map((o) => (
+                  <TableRow key={o.id} className="border-border/60">
+                    <TableCell className="pl-5 font-semibold text-coffee-950">
+                      #{o.number}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground tabular-nums">
+                      {formatDateTime(o.createdAt)}
+                    </TableCell>
+                    <TableCell className="max-w-0">
+                      <span className="block truncate text-coffee-950">
+                        {itemsLabel(o)}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {o.locationName}
+                    </TableCell>
+                    <TableCell className="text-right font-semibold text-coffee-950 tabular-nums">
+                      {formatTenge(o.total)}
+                    </TableCell>
+                    <TableCell className="pr-5">
+                      <StatusCell status={o.status} />
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow className="border-border/60 hover:bg-transparent">
+                  <TableCell
+                    colSpan={6}
+                    className="py-12 text-center text-sm text-muted-foreground"
+                  >
+                    Заказы не найдены — попробуйте изменить фильтры
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
 
         {data && data.totalPages > 1 && (
           <div className="flex items-center justify-between border-t border-border/60 px-5 py-3">

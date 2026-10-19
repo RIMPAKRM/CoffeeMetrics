@@ -48,8 +48,8 @@ export function HourlyHeatmap({
   const peak = data?.peak;
 
   return (
-    <Card className="rounded-2xl border-border/70 p-5 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
-      <div className="flex items-start justify-between gap-4">
+    <Card className="rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
+      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
         <div>
           <h2 className="text-[17px] font-semibold text-coffee-950">
             Загрузка по часам
@@ -97,7 +97,7 @@ export function HourlyHeatmap({
                     <div
                       key={h}
                       title={`${DAY_FULL[d]}, ${String(h).padStart(2, "0")}:00–${String((h + 1) % 24).padStart(2, "0")}:00 · ≈ ${v} заказов`}
-                      className={`h-7 rounded-[6px] ${HEAT[bucket(v, max)]} ${
+                      className={`h-6 rounded-[6px] sm:h-7 ${HEAT[bucket(v, max)]} ${
                         peak && d === peak.dayIdx && h === peak.hour
                           ? "ring-2 ring-coffee-800"
                           : ""

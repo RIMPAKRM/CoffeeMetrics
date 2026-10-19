@@ -33,12 +33,12 @@ function KpiCard({
   footnote: string;
 }) {
   return (
-    <Card className="flex flex-col gap-1.5 rounded-2xl border-border/70 p-5 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
-      <div className="flex items-center justify-between">
+    <Card className="flex flex-col gap-1.5 rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
+      <div className="flex items-center justify-between gap-1">
         <span className="text-sm text-muted-foreground">{label}</span>
         <DeltaBadge pct={delta} />
       </div>
-      <div className="text-[28px] leading-tight font-semibold tracking-tight text-coffee-950">
+      <div className="truncate text-[22px] leading-tight font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
         {value}
       </div>
       <div className="text-xs text-muted-foreground">{footnote}</div>
@@ -58,7 +58,7 @@ export function KpiCards({
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {Array.from({ length: 4 }).map((_, i) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: static skeletons
-          <Card key={i} className="rounded-2xl border-border/70 p-5">
+          <Card key={i} className="rounded-2xl border-border/70 p-4 sm:p-5">
             <Skeleton className="h-4 w-20" />
             <Skeleton className="mt-3 h-8 w-32" />
             <Skeleton className="mt-2 h-3 w-28" />

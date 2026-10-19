@@ -47,10 +47,10 @@ export default function DashboardPage() {
     : "Загрузка данных…";
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-[28px] font-semibold tracking-tight text-coffee-950">
+          <h1 className="text-2xl font-semibold tracking-tight text-coffee-950 sm:text-[28px]">
             Дашборд
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
@@ -62,15 +62,15 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <div className="mt-6 grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_310px]">
-        <div className="flex min-w-0 flex-col gap-6">
+      <div className="mt-4 grid items-start gap-4 sm:mt-6 sm:gap-6 xl:grid-cols-[minmax(0,1fr)_310px]">
+        <div className="flex min-w-0 flex-col gap-4 sm:gap-6">
           <KpiCards summary={summary.data} loading={summary.isPending} />
           <RevenueChart
             points={revenue.data}
             summary={summary.data}
             loading={revenue.isPending}
           />
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
             <TopItems items={topItems.data} loading={topItems.isPending} />
             <CategoryDonut
               categories={categories.data}

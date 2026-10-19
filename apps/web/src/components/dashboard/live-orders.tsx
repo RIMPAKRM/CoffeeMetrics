@@ -46,7 +46,7 @@ export function LiveOrders({
   loading: boolean;
 }) {
   return (
-    <Card className="flex h-full flex-col rounded-2xl border-border/70 p-5 shadow-[0_1px_3px_rgba(60,40,20,0.06)]">
+    <Card className="flex h-full flex-col rounded-2xl border-border/70 p-4 shadow-[0_1px_3px_rgba(60,40,20,0.06)] sm:p-5">
       <div className="flex items-center justify-between">
         <h2 className="text-[17px] font-semibold text-coffee-950">
           Последние заказы
